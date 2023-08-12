@@ -5,7 +5,7 @@
 }
 
 :root {
-  --text-color: black;
+  --text-color: DeepSkyBlue;
   --bg-url: url(./assets/Luar.jpg);
   --stroke-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.05);
@@ -79,20 +79,25 @@ body * {
 
   position: absolute;
   top: 50%;
-  right: 0;
+  left: 0;
   z-index: 1;
   transform: translateY(-50%);
+
+  animation: slide-back 0.2s
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  animation: slide-in 0.4s forwards;
+}
+
+switch button:hover {
+  outline: 10px solid var(--highlight-color);
 }
 
 #switch span {
   display: block;
-  width: 50px;
-  height: 25px;
+  width: 64px;
+  height: 24px;
   background: var(--surface-color);
   border: 1px solid var(--stroke-color);
   backdrop-filter: blur(4px);
@@ -162,18 +167,26 @@ ul li a:hover {
 }
 
 footer {
-  padding: 20px 0;
+  padding: 5px 0;
   text-align: center;
-  font-size: 15px;
+  font-size: 20px;
 }
 
-/* media queries */
-@media (min-width: 700px) {
-  :root {
-    --bg-url: url(./assets/Luar.jpg)
+/* animation */
+@keyframes slide-in {
+  from {
+    left: 0;
   }
+  to {
+    left: 50%;
+  }
+}
 
-  .Light {
-    --bg-url: url(./assets/Praia.jpg)
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
